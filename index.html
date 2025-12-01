@@ -20,21 +20,39 @@
     nav a{color:rgba(255,255,255,0.8);text-decoration:none;margin-left:12px;font-weight:600;font-size:14px}
     nav a:hover{color:#12b7a8}
 
+
+
+    /* Hero area stacked: image centered and large, then text underneath */
     .hero{
       display:flex;
-      gap:24px;
+      flex-direction:column;
       align-items:center;
-      padding:18px;
-      border-radius:10px;
-      background: rgba(255,255,255,0.01);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-      flex-wrap:wrap;
+      gap:18px;
+      padding:28px;
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      box-shadow:0 8px 30px rgba(2,8,15,0.6);
     }
+
+    /* centered image card */
+    .photo-card{
+      width:320px;
+      height:320px;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.05);
+      background:var(--glass);
+      display:block;
+      box-shadow:0 10px 30px rgba(2,8,15,0.6);
+      position:relative;
+    }
+    .photo-card img{width:100%;height:100%;object-fit:cover;display:block}
 
     .left{flex:1;min-width:260px}
     h1{font-size:44px;margin:6px 0}
     h2{font-size:18px;margin:6px 0;color:#9fd6d8}
-    .lead{color:rgba(255,255,255,0.95);line-height:1.5;margin-top:10px}
+    .lead{color:rgba(230,250,250,0.96);line-height:1.55;margin-bottom:12px;font-size:15.6px}
+    .big-hi{font-size:64px;margin:0;line-height:0.95}
     .bullets{list-style:none;padding-left:0;margin-top:12px}
     .bullets li{margin:6px 0;padding-left:18px;position:relative}
     .bullets li:before{content:"•";position:absolute;left:0;color:#12b7a8;font-weight:700}
@@ -45,10 +63,6 @@
     .btn-accent{background:#ff6f4d;color:#fff}
 
     .meta{margin-top:10px;color:rgba(255,255,255,0.78);font-size:14px}
-
-    .photo-card{width:320px;height:320px;border-radius:12px;overflow:hidden;background:#0b2630;border:1px solid rgba(255,255,255,0.04);flex:0 0 320px;display:flex;align-items:center;justify-content:center;position:relative}
-    .photo-card img{width:100%;height:100%;object-fit:cover;display:block}
-    .photo-caption{position:absolute;left:50%;transform:translateX(-50%);bottom:8px;background:rgba(0,0,0,0.4);padding:8px 12px;border-radius:999px;font-weight:700}
 
     section{margin-top:20px;padding:14px;border-radius:8px;background:rgba(255,255,255,0.01)}
     h3{margin:0 0 8px;color:#9fd6d8}
@@ -91,8 +105,13 @@
       </nav>
     </header>
 
+    <section class="hero" id="about" aria-label="About">
+      <div class="photo-card" role="img" aria-label="Profile photo of Vedhasree Bonala">
+        <img src="data/profile.jpg" alt="Vedhasree Bonala — profile photo">
+      </div>
+    
     <section class="hero" aria-label="intro">
-      <div class="left">
+      <div class="big-hi">
         <h1>Hello,</h1>
         <h2>I'm <span style="color:#12b7a8"><b>Vedhasree Bonala</b></span> — Data Engineer</h2>
 
@@ -116,11 +135,7 @@
           The best way to reach me is through email.
         </p>
 
-        <ul class="bullets" aria-hidden="true">
-          <li>Design and operate scalable ETL/ELT pipelines, lakehouse & warehouse architectures.</li>
-          <li>Build robust streaming and batch ingestion with strong data quality and governance.</li>
-          <li>Enable BI & analytics teams with curated, production-ready datasets and dashboards.</li>
-        </ul>
+      
 
         <div class="ctas" aria-hidden="true">
           <a class="btn btn-primary" href="https://github.com/vedhabonala" target="_blank">GitHub</a>
@@ -133,18 +148,12 @@
           <span>Email: <a href="mailto:vedasri996@gmail.com" style="color:#9fd6d8">vedasri996@gmail.com</a></span>
         </div>
       </div>
-
-      <div class="photo-card" role="img" aria-label="profile photo">
-        <img src="data/profile.jpg" alt="Vedhasree profile">
-        <div class="photo-caption">Hello — I'm Vedhasree Bonala</div>
-      </div>
     </section>
 
     <!-- Experience -->
     <section id="experience" aria-labelledby="experience-heading">
-      <h3 id="experience-heading">Experience (summary)</h3>
-      <p style="color:#d7f0ef">UnitedHealth Group (Jan 2025 – Present) • Arkansas Summer Research Institute (May 2024 – Nov 2024) • Wipro (Aug 2022 – Dec 2023) • Verizon (Nov 2021 – Aug 2022)</p>
-
+      <h2 id="experience-heading">WORK EXPERIENCE</h2>
+      
       <!-- UnitedHealth Group details -->
       <details>
         <summary>UnitedHealth Group — Data Engineer (Jan 2025 – Present)</summary>
@@ -195,7 +204,7 @@
 
     <!-- Projects -->
     <section id="projects">
-      <h3>Projects</h3>
+      <h2>PROJECTS</h2>
 
       <div class="project">
         <strong>Azure Lakehouse — End-to-End Analytics Platform</strong> <div style="color:#cfeff0">• Feb 2024</div>
@@ -319,18 +328,20 @@
       <h3>Skills & Certifications</h3>
       <div class="skills-grid" style="margin-top:10px">
         <div class="skill-col">
-          <strong>Programming & Scripting:</strong><br>Python, SQL, C, C++, Java, PySpark, Bash
+          <strong>Programming & Scripting:</strong><br>Python, Scala, SQL, C, C++, Java, PySpark, Bash
           <br><br>
           <strong>AWS:</strong><br>S3, Glue, Glue Crawler, Lambda, Step Functions, CloudWatch, SQS, SNS, IAM, EMR, Athena, EventBridge, RDS
           <br><br>
           <strong>Azure:</strong><br>ADF, ADLS Gen2, Synapse Analytics, Blob Storage, Databricks
+          <br><br>
+          <strong>Security & Governance:</strong><br>IAM, Data Masking, Encryption, Schema Evolution, Data Quality Validation, HIPAA-compliant handling of PHI/PII
         </div>
         <div class="skill-col">
           <strong>GCP:</strong><br>BigQuery, Dataflow, Pub/Sub, Dataproc, Cloud Storage, Looker Studio
           <br><br>
           <strong>Data Engineering:</strong><br>Spark, Kafka, Airflow, Delta Lake, Lakehouse, Hadoop, Hive
           <br><br>
-          <strong>Visualization & Governance:</strong><br>Power BI, Tableau, Looker Studio • IAM, Masking, HIPAA
+          <strong>Visualization & Governance:</strong><br>Power BI, Tableau, Looker Studio, Superset
           <br><br>
           <strong>Certifications:</strong><br>AWS Solutions Architect – Associate<br>Azure AI Fundamentals
         </div>
