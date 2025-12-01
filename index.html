@@ -1,214 +1,375 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Vedhasree Bonala — Data Engineer</title>
+  <style>
+    /* --- simple, robust styles --- */
+    html,body{height:100%;margin:0;padding:0}
+    body{
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(#071427, #04121a);
+      color:#eaf9f9;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    .wrap{max-width:1100px;margin:28px auto;padding:18px}
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+    .brand{font-weight:800}
+    nav a{color:rgba(255,255,255,0.8);text-decoration:none;margin-left:12px;font-weight:600;font-size:14px}
+    nav a:hover{color:#12b7a8}
 
-  <!-- Font Awesome (optional icons) -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    .hero{
+      display:flex;
+      gap:24px;
+      align-items:center;
+      padding:18px;
+      border-radius:10px;
+      background: rgba(255,255,255,0.01);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      flex-wrap:wrap;
+    }
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css" />
-  <meta name="description" content="Vedhasree Bonala — Data Engineer portfolio. Cloud, ETL/ELT, lakehouse, streaming." />
+    .left{flex:1;min-width:260px}
+    h1{font-size:44px;margin:6px 0}
+    h2{font-size:18px;margin:6px 0;color:#9fd6d8}
+    .lead{color:rgba(255,255,255,0.95);line-height:1.5;margin-top:10px}
+    .bullets{list-style:none;padding-left:0;margin-top:12px}
+    .bullets li{margin:6px 0;padding-left:18px;position:relative}
+    .bullets li:before{content:"•";position:absolute;left:0;color:#12b7a8;font-weight:700}
+
+    .ctas{margin-top:14px}
+    .btn{display:inline-block;padding:9px 12px;border-radius:8px;text-decoration:none;font-weight:700;margin-right:8px;font-size:14px}
+    .btn-primary{background:#12b7a8;color:#032}
+    .btn-accent{background:#ff6f4d;color:#fff}
+
+    .meta{margin-top:10px;color:rgba(255,255,255,0.78);font-size:14px}
+
+    .photo-card{width:320px;height:320px;border-radius:12px;overflow:hidden;background:#0b2630;border:1px solid rgba(255,255,255,0.04);flex:0 0 320px;display:flex;align-items:center;justify-content:center;position:relative}
+    .photo-card img{width:100%;height:100%;object-fit:cover;display:block}
+    .photo-caption{position:absolute;left:50%;transform:translateX(-50%);bottom:8px;background:rgba(0,0,0,0.4);padding:8px 12px;border-radius:999px;font-weight:700}
+
+    section{margin-top:20px;padding:14px;border-radius:8px;background:rgba(255,255,255,0.01)}
+    h3{margin:0 0 8px;color:#9fd6d8}
+    .project{margin-bottom:12px}
+    .project ul{margin:6px 0 0 18px}
+    .dev-list li{margin:6px 0}
+    .skills-grid{display:flex;flex-wrap:wrap;gap:12px}
+    .skill-col{flex:1;min-width:240px}
+
+    /* details styling */
+    details{margin-top:8px;border-radius:6px;padding:8px;background:rgba(255,255,255,0.015)}
+    details summary{cursor:pointer;font-weight:700;color:#cfeff0;outline:none;padding:6px 0}
+    details[open]{background:rgba(255,255,255,0.02)}
+    details p, details li{color:rgba(255,255,255,0.92);line-height:1.5}
+    details ul{margin:8px 0 0 18px}
+
+    footer{text-align:center;margin-top:18px;color:rgba(255,255,255,0.7);font-size:14px;padding-bottom:28px}
+
+    @media(max-width:900px){
+      h1{font-size:34px}
+      .photo-card{width:220px;height:220px;margin:12px auto}
+      .hero{flex-direction:column;text-align:center}
+      nav{display:none}
+    }
+  </style>
 </head>
 <body>
+  <div class="wrap">
 
-  <!-- NAV -->
-  <nav class="nav">
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills & Certifications</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="data/resumee.pdf" target="_blank">CV</a></li>
-    </ul>
-  </nav>
+    <header>
+      <div class="brand">WELCOME</div>
+      <nav aria-label="Main nav">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#developments">Developments</a>
+        <a href="#skills">Skills & Certifications</a>
+        <a href="data/resumee.pdf" target="_blank">CV</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-  <!-- HERO -->
-  <header id="about" class="hero">
-    <div class="hero-inner">
-      <div class="hero-text">
+    <section class="hero" aria-label="intro">
+      <div class="left">
         <h1>Hello,</h1>
-        <h2>I'm <span class="name">VedhaSree Bonala</span></h2>
-        <p class="tagline">Data Engineer • Cloud & Big Data • AWS · Azure · GCP</p>
+        <h2>I'm <span style="color:#12b7a8"><b>Vedhasree Bonala</b></span> — Data Engineer</h2>
 
-        <ul class="highlights">
+        <p class="lead">
+          I'm Vedhasree Bonala, a dedicated and detail-oriented Data Engineer passionate about building modern data ecosystems that help organizations transform raw information into meaningful, intelligent outcomes. I began my journey working with structured on-premises data systems, where I learned how to manage, optimize, and maintain traditional data platforms. As I advanced in my career, I embraced the power of cloud technologies, designing scalable, secure, and high-performance data pipelines that support real-time insights, analytics, and machine learning solutions.
+        </p>
+
+        <p class="lead">
+          Over the years, I’ve gained strong expertise in ETL/ELT development, big data processing, cloud data architectures, and data governance practices. I specialize in constructing resilient pipelines that ingest, clean, transform, and model datasets of all sizes—ensuring accuracy, reliability, and end-to-end data flow efficiency. My work spans across diverse data sources, structured and unstructured formats, and cloud environments such as Azure, AWS, Snowflake, and Databricks. I take pride in implementing best practices in data quality validation, metadata management, lineage tracking, and security controls, enabling teams to trust and utilize data confidently.
+        </p>
+
+        <p class="lead">
+          Beyond building pipelines, I also enjoy enabling analytics and intelligence. I’ve worked on feature engineering, exploratory analysis, and predictive modeling, turning complex datasets into valuable business insights. By analyzing patterns, trends, and behaviors, I’ve helped teams make informed decisions, improve operational efficiency, and unlock new opportunities. Whether it’s designing a reliable data architecture, optimizing performance, or supporting ML workflows, I focus on delivering solutions that are automated, scalable, and aligned with real business goals.
+        </p>
+
+        <p class="lead">
+          A blend of technical expertise, analytical thinking, and a passion for problem-solving drives everything I do. I collaborate closely with stakeholders, analysts, engineers, and architects to build data systems that are not only functional but transformational. My goal is simple: to create powerful data solutions that help organizations innovate, grow, and make smarter decisions. For collaborations or opportunities, the best way to reach me is through email.
+        </p>
+
+        <p class="lead">
+          The best way to reach me is through email.
+        </p>
+
+        <ul class="bullets" aria-hidden="true">
           <li>Design and operate scalable ETL/ELT pipelines, lakehouse & warehouse architectures.</li>
           <li>Build robust streaming and batch ingestion with strong data quality and governance.</li>
           <li>Enable BI & analytics teams with curated, production-ready datasets and dashboards.</li>
         </ul>
 
-        <p class="cta">
-          <a class="btn" href="data/resume.pdf" target="_blank"><i class="fa fa-file"></i> Download CV</a>
-          <a class="btn" href="https://github.com/vedhabonala" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/vedhasreeb" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        </p>
+        <div class="ctas" aria-hidden="true">
+          <a class="btn btn-primary" href="https://github.com/vedhabonala" target="_blank">GitHub</a>
+          <a class="btn btn-accent" href="https://www.linkedin.com/in/vedhasreeb" target="_blank">LinkedIn</a>
+        </div>
 
-        <p class="contact-mini">
-          <strong>Phone</strong>: <a href="tel:+15019442776">+1 501-944-2776</a> &nbsp; • &nbsp;
-          <strong>Email</strong>: <a href="mailto:vedasri996@gmail.com">vedasri996@gmail.com</a>
-        </p>
+        <div class="meta">
+          <span>Phone: <a href="tel:+15019442776" style="color:#9fd6d8">+1 501-944-2776</a></span>
+          <span style="margin:0 8px">•</span>
+          <span>Email: <a href="mailto:vedasri996@gmail.com" style="color:#9fd6d8">vedasri996@gmail.com</a></span>
+        </div>
       </div>
 
-      <div class="hero-photo">
-        <!-- Upload your headshot to data/profile.jpg -->
-        <img src="data/profile.jpg" alt="Vedhasree Bonala — profile photo" />
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-    <!-- ABOUT (full paragraphs you provided) -->
-    <section class="section about-long">
-      <h3>About me</h3>
-
-      <p>
-     I'm Vedhasree Bonala, a dedicated and detail-oriented Data Engineer passionate about building modern data ecosystems that help organizations transform raw information into meaningful, intelligent outcomes. I began my journey working with structured on-premises data systems, where I learned how to manage, optimize, and maintain traditional data platforms. As I advanced in my career, I embraced the power of cloud technologies, designing scalable, secure, and high-performance data pipelines that support real-time insights, analytics, and machine learning solutions.                    
-
-      <p>
-        Over the years, I’ve gained strong expertise in ETL/ELT development, big data processing, cloud data architectures, and data governance practices. I specialize in constructing resilient pipelines that ingest, clean, transform, and model datasets of all sizes—ensuring accuracy, reliability, and end-to-end data flow efficiency. My work spans across diverse data sources, structured and unstructured formats, and cloud environments such as Azure, AWS, Snowflake, and Databricks. I take pride in implementing best practices in data quality validation, metadata management, lineage tracking, and security controls, enabling teams to trust and utilize data confidently.
-      </p>
-
-      <p>
-        Beyond building pipelines, I also enjoy enabling analytics and intelligence. I’ve worked on feature engineering, exploratory analysis, and predictive modeling, turning complex datasets into valuable business insights. By analyzing patterns, trends, and behaviors, I’ve helped teams make informed decisions, improve operational efficiency, and unlock new opportunities. Whether it’s designing a reliable data architecture, optimizing performance, or supporting ML workflows, I focus on delivering solutions that are automated, scalable, and aligned with real business goals.
-      </p>
-
-      <p>
-        A blend of technical expertise, analytical thinking, and a passion for problem-solving drives everything I do. I collaborate closely with stakeholders, analysts, engineers, and architects to build data systems that are not only functional but transformational. My goal is simple: to create powerful data solutions that help organizations innovate, grow, and make smarter decisions. The best way to reach me is through email.
-      </p>
-
-      <p>
-        The best way to reach me is through email.
-      </p>
-
-      
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section">
-      <h3>Work Experience</h3>
-
-      <article class="job">
-        <h4>UnitedHealth Group — Data Engineer (Contract)</h4>
-        <p class="meta">Jan 2025 – Present | Remote</p>
-        <details>
-          <summary>Key contributions</summary>
-          <ul>
-            <li>Built HIPAA-compliant ELT pipelines using AWS Glue, Lambda and PySpark for clinical, claims, and eligibility datasets.</li>
-            <li>Designed S3-backed data lake layers with automated ingestion, schema evolution and partitioning for healthcare analytics.</li>
-            <li>Implemented Redshift transformation patterns and query tuning to improve heavy analytical workloads.</li>
-            <li>Established data quality checks, anomaly detection and reconciliation routines to improve trust in downstream reporting.</li>
-            <li>Developed metadata-driven ingestion and lineage patterns for auditability and regulatory compliance.</li>
-            <li>Applied encryption, masking and IAM controls when handling PHI/PII datasets and enabled BI teams with curated data marts.</li>
-          </ul>
-        </details>
-      </article>
-
-      <article class="job">
-        <h4>Arkansas Summer Research Institute — Data Engineer Intern</h4>
-        <p class="meta">May 2024 – Nov 2024 | Little Rock, AR</p>
-        <details>
-          <summary>Key contributions</summary>
-          <ul>
-            <li>Developed ADF and Databricks pipelines to ingest multi-format research data and prepare Delta Lake medallion layers.</li>
-            <li>Built reproducible lakehouse patterns and PySpark jobs to support analytics and ML experiments.</li>
-            <li>Created Synapse analytical models and Power BI / Tableau dashboards for research teams.</li>
-          </ul>
-        </details>
-      </article>
-
-      <article class="job">
-        <h4>Wipro — Data Engineer</h4>
-        <p class="meta">Aug 2022 – Dec 2023 | Hyderabad, India</p>
-        <details>
-          <summary>Key contributions</summary>
-          <ul>
-            <li>Engineered PySpark / Databricks and AWS Glue pipelines to ingest and transform enterprise datasets at scale.</li>
-            <li>Designed dimensional models in Snowflake and Redshift and implemented transformation patterns for BI consumption.</li>
-            <li>Automated multi-source ingestion with Apache Airflow and implemented production monitoring and alerting.</li>
-            <li>Optimized Spark jobs using partitioning, broadcast joins and caching to improve runtime and reliability.</li>
-            <li>Maintained data governance and integrated data quality checks into pipeline workflows.</li>
-          </ul>
-        </details>
-      </article>
-
-      <article class="job">
-        <h4>Verizon — Data Engineer</h4>
-        <p class="meta">Nov 2021 – Aug 2022 | Chennai, India</p>
-        <details>
-          <summary>Key contributions</summary>
-          <ul>
-            <li>Built BigQuery and Dataflow pipelines for telecom ingestion and analytics.</li>
-            <li>Implemented Pub/Sub streaming ingestion patterns and reusable Dataflow templates for batch & streaming jobs.</li>
-            <li>Optimized BigQuery designs with partitioning, clustering and materialized views to improve query performance.</li>
-            <li>Automated schema validation and anomaly detection to ensure reliable analytics for Looker Studio dashboards.</li>
-          </ul>
-        </details>
-      </article>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-      <h3>Selected Projects</h3>
-
-      <div class="project">
-        <h4>Azure Lakehouse End-to-End Analytics (Azure)</h4>
-        <p>Built ADF → ADLS → Databricks lakehouse with Delta layers and Synapse analytical models to support research and BI reporting.</p>
-      </div>
-
-      <div class="project">
-        <h4>Real-Time Streaming Pipeline (GCP)</h4>
-        <p>Implemented Pub/Sub → Dataflow → BigQuery streaming ingestion with schema validation, dead-letter handling and monitoring for reliable real-time analytics.</p>
-      </div>
-
-      <div class="project">
-        <h4>Modern ELT Platform — Airflow + Snowflake + dbt (AWS / Snowflake)</h4>
-        <p>Orchestrated Airflow DAGs, dbt models and Snowpipe ingestion to automate staging and modeling for consistent BI datasets.</p>
-      </div>
-
-      <div class="project">
-        <h4>Real-Time Healthcare Events Pipeline (Kafka)</h4>
-        <p>Built Kafka → Spark Structured Streaming → Snowflake pipeline for clinical and claims events with PHI protections, schema checks and secure ingestion.</p>
+      <div class="photo-card" role="img" aria-label="profile photo">
+        <img src="data/profile.jpg" alt="Vedhasree profile">
+        <div class="photo-caption">Hello — I'm Vedhasree Bonala</div>
       </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="section">
-      <h3>Skills & Tools</h3>
-      <ul class="skills-grid">
-        <li>Python, PySpark, SQL, Bash</li>
-        <li>AWS: S3, Glue, Lambda, Redshift, EMR, Athena</li>
-        <li>Azure: ADF, Databricks, ADLS, Synapse</li>
-        <li>GCP: Pub/Sub, Dataflow, BigQuery</li>
-        <li>Snowflake, dbt, Airflow, Kafka, Delta Lake</li>
-        <li>Hadoop, Hive, HDFS</li>
-        <li>Power BI, Tableau, Looker Studio</li>
-        <li>Git, Jenkins, Terraform, Docker, Kubernetes</li>
-        <li>Data governance: IAM, masking, encryption, lineage, HIPAA handling</li>
+    <!-- Experience -->
+    <section id="experience" aria-labelledby="experience-heading">
+      <h3 id="experience-heading">Experience (summary)</h3>
+      <p style="color:#d7f0ef">UnitedHealth Group (Jan 2025 – Present) • Arkansas Summer Research Institute (May 2024 – Nov 2024) • Wipro (Aug 2022 – Dec 2023) • Verizon (Nov 2021 – Aug 2022)</p>
+
+      <!-- UnitedHealth Group details -->
+      <details>
+        <summary>UnitedHealth Group — Data Engineer (Jan 2025 – Present)</summary>
+        <ul>
+          <li>Engineered HIPAA-compliant AWS ELT pipelines using Glue, Lambda, and PySpark to process clinical, claims, and eligibility datasets.</li>
+          <li>Designed S3 lake layers with automated ingestion, schema evolution, and partitioning for healthcare analytics.</li>
+          <li>Implemented Redshift transforms with distribution/sort keys and WLM tuning to accelerate actuarial/claims queries.</li>
+          <li>Applied data quality frameworks (validation, anomaly detection, reconciliation) and metadata-driven ingestion for lineage and compliance.</li>
+          <li>Optimized PySpark for PHI/PII handling with encryption, masking, and IAM controls; enabled BI teams with curated datasets.</li>
+        </ul>
+      </details>
+
+      <!-- ASRI details -->
+      <details>
+        <summary>Arkansas Summer Research Institute — Data Engineer Intern (May 2024 – Nov 2024)</summary>
+        <ul>
+          <li>Developed Azure ETL/ELT pipelines using ADF, Databricks, and PySpark to process multi-format research datasets.</li>
+          <li>Built Lakehouse (ADLS + Delta) with bronze/silver/gold layers and medallion patterns for ML and analytics teams.</li>
+          <li>Created Synapse analytical layers (star schema, incremental loads) and Power BI / Tableau dashboards for research insights.</li>
+          <li>Automated ingestion from APIs, Blob Storage, and SQL sources with monitoring and alerting.</li>
+        </ul>
+      </details>
+
+      <!-- Wipro details -->
+      <details>
+        <summary>Wipro — Data Engineer (Aug 2022 – Dec 2023)</summary>
+        <ul>
+          <li>Engineered ETL pipelines using PySpark, Databricks, and AWS Glue to ingest and transform multi-terabyte enterprise datasets.</li>
+          <li>Designed and tuned Snowflake/Redshift models (star/snowflake) and optimized SQL to improve query performance.</li>
+          <li>Orchestrated Airflow DAGs for cross-source ingestion (APIs, RDS, S3, streaming), reducing manual ops and improving reliability.</li>
+          <li>Improved PySpark performance with partitioning, broadcast joins, caching and compression; executed Spark jobs on EMR for heavy transformation tasks.</li>
+          <li>Integrated data quality checks (null profiling, anomaly detection, referential validation) into pipelines and collaborated with BI teams.</li>
+        </ul>
+      </details>
+
+      <!-- Verizon details -->
+      <details>
+        <summary>Verizon — Data Engineer (Nov 2021 – Aug 2022)</summary>
+        <ul>
+          <li>Built GCP-native ETL pipelines using BigQuery, Dataflow, and Cloud Storage to ingest and transform telecom datasets.</li>
+          <li>Implemented Pub/Sub streaming for near-real-time ingestion of event logs and network telemetry.</li>
+          <li>Optimized BigQuery using partitioning, clustering, materialized views and window functions; created reusable Dataflow templates.</li>
+          <li>Automated quality checks (schema validation, NULL profiling, anomaly detection) and supported on-prem → GCP migrations.</li>
+        </ul>
+      </details>
+
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h3>Projects</h3>
+
+      <div class="project">
+        <strong>Azure Lakehouse — End-to-End Analytics Platform</strong> <div style="color:#cfeff0">• Feb 2024</div>
+        <details>
+          <summary>Details</summary>
+          <ul>
+            <li>Built ADF-driven ingestion into ADLS Gen2 and Delta bronze/silver/gold layers in Databricks and Synapse.</li>
+            <li>Implemented incremental loads, schema evolution, orchestration, monitoring, and automated alerts to support ML and BI workflows.</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="project">
+        <strong>Real-time Streaming Pipeline (GCP: Pub/Sub → Dataflow → BigQuery)</strong> <div style="color:#cfeff0">• May 2024</div>
+        <details>
+          <summary>Details</summary>
+          <ul>
+            <li>Implemented Pub/Sub ingestion and Dataflow/Apache Beam processing with windowing and writes into partitioned BigQuery tables.</li>
+            <li>Added schema validation, dead-letter handling, observability, and cost-optimized partitioning for stable streaming ingestion.</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="project">
+        <strong>Modern ELT Platform (Airflow + Snowflake + dbt)</strong> <div style="color:#cfeff0">• Sep 2023</div>
+        <details>
+          <summary>Details</summary>
+          <ul>
+            <li>Created Airflow DAGs, Snowpipe streaming loads, and dbt models with tests and CI to standardize transformations.</li>
+            <li>Built modular dbt staging → marts and environment-aware deploys to support reliable BI pipelines.</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="project">
+        <strong>Real-time Healthcare Events Pipeline (Kafka → Spark Streaming → Snowflake)</strong> <div style="color:#cfeff0">• Dec 2024</div>
+        <details>
+          <summary>Details</summary>
+          <ul>
+            <li>Streamed clinical and claims events via Kafka, processed with Spark Structured Streaming, and ingested into Snowflake via Snowpipe.</li>
+            <li>Implemented PHI/PII protections, encryption, masking, RBAC, and lineage to meet HIPAA-aligned controls for analytics-ready tables.</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="project">
+        <strong>Serverless YouTube Analytics Pipeline (AWS)</strong> <div style="color:#cfeff0">• Oct 2021</div>
+        <details>
+          <summary>Details</summary>
+          <ul>
+            <li>Lambda-driven ingestion into S3, Athena/Redshift for analytics; automated partitioning, lifecycle, and dashboards for channel KPI analysis.</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="project">
+        <strong>IoT Sensor Analytics (Azure Event Hubs → Databricks)</strong> <div style="color:#cfeff0">• Nov 2022</div>
+        <details>
+          <summary>Details</summary>
+          <ul>
+            <li>Ingested telemetry into Delta Lake and ran streaming aggregates in Databricks for near-real-time monitoring and anomaly detection.</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="project">
+        <strong>End-to-End Lakehouse (dbt + Snowflake + S3)</strong> <div style="color:#cfeff0">• Feb 2023</div>
+        <details>
+          <summary>Details</summary>
+          <ul>
+            <li>S3 landing + Snowflake ingestion, dbt transformations and materialized marts with tests and governance for consistent BI datasets.</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="project">
+        <strong>Predictive Sales Forecasting (BigQuery ML)</strong> <div style="color:#cfeff0">• Jun 2023</div>
+        <details>
+          <summary>Details</summary>
+          <ul>
+            <li>Built feature-engineered datasets in BigQuery and trained scheduled forecasting models using BigQuery ML for SKU-level demand forecasts.</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="project">
+        <strong>Real-time Log Analytics (Kafka → Elastic → Kibana)</strong> <div style="color:#cfeff0">• Feb 2022</div>
+        <details>
+          <summary>Details</summary>
+          <ul>
+            <li>Streamed logs into Elastic via Kafka and built Kibana dashboards with alerting and retention policies for SRE workflows.</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="project">
+        <strong>Finance Data Warehouse (Azure Synapse)</strong> <div style="color:#cfeff0">• Jul 2022</div>
+        <details>
+          <summary>Details</summary>
+          <ul>
+            <li>Designed Synapse models and ETL pipelines with partitioning, incremental loads, and role-based access for executive reporting.</li>
+          </ul>
+        </details>
+      </div>
+
+    </section>
+
+    <!-- Developments -->
+    <section id="developments">
+      <h3>Developments</h3>
+      <ul class="dev-list">
+        <li>Started working as a Data Engineer at <a href="https://www.unitedhealthgroup.com" target="_blank" style="color:#12b7a8">UnitedHealth Group</a></li>
+        <li>Data Engineer Intern at <a href="https://ualr.edu" target="_blank" style="color:#12b7a8">Arkansas Summer Research Institute</a></li>
+        <li>Worked as Data Engineer at <a href="https://www.wipro.com" target="_blank" style="color:#12b7a8">Wipro</a></li>
+        <li>Worked as Data Engineer at <a href="https://www.verizon.com" target="_blank" style="color:#12b7a8">Verizon</a></li>
       </ul>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <h3>Contact</h3>
-      <p>Email: <a href="mailto:vedasri996@gmail.com">vedasri996@gmail.com</a></p>
-      <p>Phone: <a href="tel:+15019442776">+1 501-944-2776</a></p>
-      <p>
-        <a href="https://www.linkedin.com/in/vedhasreeb" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        &nbsp;
-        <a href="https://github.com/vedhabonala" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        &nbsp;
-        <a href="https://vedhabonala.github.io/" target="_blank"><i class="fa fa-globe"></i> Portfolio</a>
-      </p>
+    <!-- Skills -->
+    <section id="skills">
+      <h3>Skills & Certifications</h3>
+      <div class="skills-grid" style="margin-top:10px">
+        <div class="skill-col">
+          <strong>Programming & Scripting:</strong><br>Python, SQL, C, C++, Java, PySpark, Bash
+          <br><br>
+          <strong>AWS:</strong><br>S3, Glue, Glue Crawler, Lambda, Step Functions, CloudWatch, SQS, SNS, IAM, EMR, Athena, EventBridge, RDS
+          <br><br>
+          <strong>Azure:</strong><br>ADF, ADLS Gen2, Synapse Analytics, Blob Storage, Databricks
+        </div>
+        <div class="skill-col">
+          <strong>GCP:</strong><br>BigQuery, Dataflow, Pub/Sub, Dataproc, Cloud Storage, Looker Studio
+          <br><br>
+          <strong>Data Engineering:</strong><br>Spark, Kafka, Airflow, Delta Lake, Lakehouse, Hadoop, Hive
+          <br><br>
+          <strong>Visualization & Governance:</strong><br>Power BI, Tableau, Looker Studio • IAM, Masking, HIPAA
+          <br><br>
+          <strong>Certifications:</strong><br>AWS Solutions Architect – Associate<br>Azure AI Fundamentals
+        </div>
+      </div>
     </section>
-  </main>
 
-  <footer class="footer">
-    <p>© 2025 Vedhasree Bonala</p>
-  </footer>
+    <!-- Contact -->
+    <section id="contact">
+      <h3>Contact</h3>
+      <p>Phone: <a href="tel:+15019442776" style="color:#cfeff0">+1 501-944-2776</a><br>
+      Email: <a href="mailto:vedasri996@gmail.com" style="color:#cfeff0">vedasri996@gmail.com</a><br>
+      LinkedIn: <a href="https://www.linkedin.com/in/vedhasreeb" target="_blank" style="color:#cfeff0">linkedin.com/in/vedhasreeb</a><br>
+      GitHub: <a href="https://github.com/vedhabonala" target="_blank" style="color:#cfeff0">github.com/vedhabonala</a></p>
+    </section>
 
+    <footer>
+      © <span id="yr">2025</span> Vedhasree Bonala — Data Engineering — Little Rock, AR
+    </footer>
+  </div>
+
+  <script>
+    // set footer year dynamically
+    var yr = document.getElementById('yr');
+    if (yr) yr.textContent = new Date().getFullYear();
+
+    // Accessibility: toggle summary "aria-expanded" attribute for screen readers
+    document.querySelectorAll('details').forEach(function(d){
+      var s = d.querySelector('summary');
+      if(s){
+        s.setAttribute('role','button');
+        s.setAttribute('aria-expanded', d.hasAttribute('open') ? 'true' : 'false');
+        s.addEventListener('click', function(){
+          // set aria-expanded after a tiny timeout to reflect new state
+          setTimeout(function(){
+            s.setAttribute('aria-expanded', d.hasAttribute('open') ? 'true' : 'false');
+          }, 10);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
-
