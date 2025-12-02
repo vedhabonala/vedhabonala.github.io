@@ -4,119 +4,109 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Vedhasree Bonala — Data Engineer</title>
+
+  <!-- Optional Google font (works in GitHub Pages / editors) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    /* --- simple, robust styles --- */
-    html,body{height:100%;margin:0;padding:0}
-    body{
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(#071427, #04121a);
-      color:#eaf9f9;
+    /* ---- Simple, explicit styling (no :root variables to avoid issues) ---- */
+    * { box-sizing: border-box; }
+    html,body{ height:100%; margin:0; padding:0; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-    }
-    .wrap{max-width:1100px;margin:28px auto;padding:18px}
-    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-    .brand{font-weight:800}
-    nav a{color:rgba(255,255,255,0.8);text-decoration:none;margin-left:12px;font-weight:600;font-size:14px}
-    nav a:hover{color:#12b7a8}
-
-
-
-    /* Hero area stacked: image centered and large, then text underneath */
-    .hero{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:18px;
-      padding:28px;
-      border-radius:var(--radius);
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
-      box-shadow:0 8px 30px rgba(2,8,15,0.6);
+      color: #eaf9f9;
+      background: linear-gradient(180deg,#071827,#04121a);
+      line-height:1.6;
     }
 
-    /* centered image card */
-    .photo-card{
-      width:320px;
-      height:320px;
-      border-radius:18px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,0.05);
-      background:var(--glass);
-      display:block;
-      box-shadow:0 10px 30px rgba(2,8,15,0.6);
-      position:relative;
-    }
-    .photo-card img{width:100%;height:100%;object-fit:cover;display:block}
+    .wrap { max-width:1100px; margin:28px auto; padding:18px; }
 
-    .left{flex:1;min-width:260px}
-    h1{font-size:44px;margin:6px 0}
-    h2{font-size:18px;margin:6px 0;color:#9fd6d8}
-    .lead{color:rgba(230,250,250,0.96);line-height:1.55;margin-bottom:12px;font-size:15.6px}
-    .big-hi{font-size:64px;margin:0;line-height:0.95}
-    .bullets{list-style:none;padding-left:0;margin-top:12px}
-    .bullets li{margin:6px 0;padding-left:18px;position:relative}
-    .bullets li:before{content:"•";position:absolute;left:0;color:#12b7a8;font-weight:700}
+    /* Header */
+    header { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px; }
+    .brand { font-weight:800; color:#eaf9f9; }
+    nav { display:flex; gap:10px; align-items:center; }
+    nav a { color: rgba(255,255,255,0.85); text-decoration:none; padding:6px 8px; border-radius:6px; font-weight:600; font-size:14px; }
+    nav a:hover { background: rgba(255,255,255,0.02); color:#12b7a8; }
 
-    .ctas{margin-top:14px}
-    .btn{display:inline-block;padding:9px 12px;border-radius:8px;text-decoration:none;font-weight:700;margin-right:8px;font-size:14px}
-    .btn-primary{background:#12b7a8;color:#032}
-    .btn-accent{background:#ff6f4d;color:#fff}
+    /* Hero section: centered big photo then intro text */
+    .hero { background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00)); border-radius:12px; padding:28px; box-shadow:0 10px 30px rgba(2,8,15,0.6); text-align:center; }
+    .photo-wrap { width:360px; height:360px; margin:0 auto; border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,0.04); background: rgba(255,255,255,0.02); box-shadow:0 12px 30px rgba(2,8,15,0.5); }
+    .photo-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
 
-    .meta{margin-top:10px;color:rgba(255,255,255,0.78);font-size:14px}
+    .name-badge { display:inline-block; margin-top: -26px; background: rgba(0,0,0,0.42); padding:10px 16px; border-radius:999px; color:#eaf9f9; font-weight:700; border:1px solid rgba(255,255,255,0.03); }
 
-    section{margin-top:20px;padding:14px;border-radius:8px;background:rgba(255,255,255,0.01)}
-    h3{margin:0 0 8px;color:#9fd6d8}
-    .project{margin-bottom:12px}
-    .project ul{margin:6px 0 0 18px}
-    .dev-list li{margin:6px 0}
-    .skills-grid{display:flex;flex-wrap:wrap;gap:12px}
-    .skill-col{flex:1;min-width:240px}
+    .greeting { margin-top:18px; max-width:920px; margin-left:auto; margin-right:auto; text-align:left; }
+    @media (max-width:900px) { .greeting { text-align:center; } }
 
-    /* details styling */
-    details{margin-top:8px;border-radius:6px;padding:8px;background:rgba(255,255,255,0.015)}
-    details summary{cursor:pointer;font-weight:700;color:#cfeff0;outline:none;padding:6px 0}
-    details[open]{background:rgba(255,255,255,0.02)}
-    details p, details li{color:rgba(255,255,255,0.92);line-height:1.5}
-    details ul{margin:8px 0 0 18px}
+    .big-hi { font-size:56px; margin:0; line-height:0.95; font-weight:800; }
+    .title { font-size:18px; margin:6px 0 16px; color:#9fd6d8; font-weight:700; }
 
-    footer{text-align:center;margin-top:18px;color:rgba(255,255,255,0.7);font-size:14px;padding-bottom:28px}
+    .lead { color: rgba(234,249,249,0.96); font-size:15.6px; margin:12px 0; text-align:justify; }
 
-    @media(max-width:900px){
-      h1{font-size:34px}
-      .photo-card{width:220px;height:220px;margin:12px auto}
-      .hero{flex-direction:column;text-align:center}
-      nav{display:none}
-    }
+    .bullets { list-style:none; padding:0; margin:12px 0; display:flex; gap:12px; justify-content:flex-start; flex-wrap:wrap; }
+    .bullets li { background: rgba(255,255,255,0.02); padding:8px 12px; border-radius:8px; font-weight:700; color:#eaf9f9; }
+
+    .buttons { margin-top:14px; display:flex; gap:10px; justify-content:flex-start; flex-wrap:wrap; }
+    .btn { padding:10px 14px; border-radius:8px; text-decoration:none; font-weight:800; font-size:14px; display:inline-block; }
+    .btn-github { background:transparent; border:2px solid rgba(255,255,255,0.06); color:#eaf9f9; }
+    .btn-linkedin { background:#12b7a8; color:#022; }
+
+    .meta { margin-top:12px; color: rgba(255,255,255,0.8); font-size:14px; }
+
+    /* Section containers */
+    section.block { margin-top:22px; padding:16px; border-radius:10px; background: rgba(255,255,255,0.01); }
+    h2.section-title { margin:0 0 8px; color:#9fd6d8; font-weight:800; font-size:16px; }
+
+    /* details/summary styling */
+    details { margin-top:10px; border-radius:8px; padding:10px; background: rgba(255,255,255,0.01); border:1px solid rgba(255,255,255,0.02); }
+    details[open] { background: rgba(255,255,255,0.015); }
+    details summary { cursor:pointer; list-style:none; font-weight:700; display:flex; justify-content:space-between; align-items:center; }
+    details summary::-webkit-details-marker { display:none; } /* hide default triangle */
+    .summary-meta { color:#9fd6d8; font-weight:600; margin-left:8px; font-size:13px; }
+    details ul { margin:8px 0 0 18px; color: rgba(255,255,255,0.92); }
+    details li { margin:6px 0; }
+
+    /* Projects grid */
+    .projects-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:12px; }
+    @media (max-width:980px) { .projects-grid { grid-template-columns:1fr; } }
+
+    footer { text-align:center; margin-top:22px; color:rgba(255,255,255,0.7); font-size:13px; padding-bottom:26px; }
+
   </style>
 </head>
 <body>
   <div class="wrap">
 
+    <!-- header -->
     <header>
       <div class="brand">WELCOME</div>
-      <nav aria-label="Main nav">
+      <nav aria-label="Main navigation">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#developments">Developments</a>
         <a href="#skills">Skills & Certifications</a>
-        <a href="data/resumee.pdf" target="_blank">CV</a>
+        <a href="data/resumee.pdf" target="_blank" rel="noopener">CV</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
+    <!-- hero -->
     <section class="hero" id="about" aria-label="About">
-      <div class="photo-card" role="img" aria-label="Profile photo of Vedhasree Bonala">
+      <div class="photo-wrap" role="img" aria-label="Profile photo of Vedhasree Bonala">
         <img src="data/profile.jpg" alt="Vedhasree Bonala — profile photo">
       </div>
-    
-    <section class="hero" aria-label="intro">
-      <div class="big-hi">
-        <h1>Hello,</h1>
-        <h2>I'm <span style="color:#12b7a8"><b>Vedhasree Bonala</b></span> — Data Engineer</h2>
 
+
+      <div class="greeting">
+        <!--header<div class="big-hi">Hello,</div>-->
+        <h2>Hello,</h2> <div class="title">I'm <strong style="color:#12b7a8">Vedhasree Bonala</strong> — Data Engineer</div>
+
+        <!-- exact paragraphs you asked to include (kept as provided) -->
         <p class="lead">
-          I'm Vedhasree Bonala, a dedicated and detail-oriented Data Engineer passionate about building modern data ecosystems that help organizations transform raw information into meaningful, intelligent outcomes. I began my journey working with structured on-premises data systems, where I learned how to manage, optimize, and maintain traditional data platforms. As I advanced in my career, I embraced the power of cloud technologies, designing scalable, secure, and high-performance data pipelines that support real-time insights, analytics, and machine learning solutions.
+          A dedicated and detail-oriented Data Engineer passionate about building modern data ecosystems that help organizations transform raw information into meaningful, intelligent outcomes. I began my journey working with structured on-premises data systems, where I learned how to manage, optimize, and maintain traditional data platforms. As I advanced in my career, I embraced the power of cloud technologies, designing scalable, secure, and high-performance data pipelines that support real-time insights, analytics, and machine learning solutions.
         </p>
 
         <p class="lead">
@@ -131,255 +121,251 @@
           A blend of technical expertise, analytical thinking, and a passion for problem-solving drives everything I do. I collaborate closely with stakeholders, analysts, engineers, and architects to build data systems that are not only functional but transformational. My goal is simple: to create powerful data solutions that help organizations innovate, grow, and make smarter decisions. For collaborations or opportunities, the best way to reach me is through email.
         </p>
 
-        <p class="lead">
-          The best way to reach me is through email.
-        </p>
+        <p class="lead">The best way to reach me is through email.</p>
 
-      
-
-        <div class="ctas" aria-hidden="true">
-          <a class="btn btn-primary" href="https://github.com/vedhabonala" target="_blank">GitHub</a>
-          <a class="btn btn-accent" href="https://www.linkedin.com/in/vedhasreeb" target="_blank">LinkedIn</a>
+        <div class="buttons" aria-hidden="true">
+          <a class="btn btn-github" href="https://github.com/vedhabonala" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-linkedin" href="https://www.linkedin.com/in/vedhasreeb" target="_blank" rel="noopener">LinkedIn</a>
         </div>
 
         <div class="meta">
-          <span>Phone: <a href="tel:+15019442776" style="color:#9fd6d8">+1 501-944-2776</a></span>
-          <span style="margin:0 8px">•</span>
-          <span>Email: <a href="mailto:vedasri996@gmail.com" style="color:#9fd6d8">vedasri996@gmail.com</a></span>
+          Phone: <a href="tel:+15019442776">+1 501-944-2776</a> &nbsp; • &nbsp;
+          Email: <a href="mailto:vedasri996@gmail.com">vedasri996@gmail.com</a>
         </div>
       </div>
     </section>
 
-    <!-- Experience -->
-    <section id="experience" aria-labelledby="experience-heading">
-      <h2 id="experience-heading">WORK EXPERIENCE</h2>
-      
-      <!-- UnitedHealth Group details -->
+    <!-- Experience (details show/hide) -->
+    <section class="block" id="experience" aria-labelledby="experience-heading">
+      <h2 class="section-title" id="experience-heading">WORK EXPERIENCE</h2>
+
       <details>
-        <summary>UnitedHealth Group — Data Engineer (Jan 2025 – Present)</summary>
+        <summary>
+          UnitedHealth Group — Data Engineer <span class="summary-meta">Jan 2025 - Present</span>
+        </summary>
         <ul>
-          <li>Engineered HIPAA-compliant AWS ELT pipelines using Glue, Lambda, and PySpark to process clinical, claims, and eligibility datasets.</li>
-          <li>Designed S3 lake layers with automated ingestion, schema evolution, and partitioning for healthcare analytics.</li>
-          <li>Implemented Redshift transforms with distribution/sort keys and WLM tuning to accelerate actuarial/claims queries.</li>
-          <li>Applied data quality frameworks (validation, anomaly detection, reconciliation) and metadata-driven ingestion for lineage and compliance.</li>
-          <li>Optimized PySpark for PHI/PII handling with encryption, masking, and IAM controls; enabled BI teams with curated datasets.</li>
+          <li>Engineered HIPAA-compliant AWS ELT pipelines using Glue, Lambda, and PySpark to process high-volume clinical, claims, and eligibility datasets.</li>
+          <li>Designed and maintained S3-based data lake layers with automated ingestion, schema evolution, and optimized partitioning strategies tailored for healthcare analytics.</li>
+          <li>Implemented Redshift transformation logic using distribution/sort keys, query pruning, and workload management (WLM).</li>
+          <li>Implemented data quality frameworks including validation rules, anomaly detection, referential integrity checks, and reconciliation routines.</li>
+          <li>Developed metadata-driven ingestion patterns supporting auditability, lineage tracking, and compliance.</li>
+          <li>Optimized PySpark workloads for transforming PHI/PII-sensitive datasets with encryption, masking, and secure IAM-based access controls.</li>
+          <li>Built curated, analytics-ready data marts enabling actuarial, provider insights, utilization management, and operational reporting teams.</li>
+          <li>Collaborated with clinical analytics, BI, and product teams to translate healthcare requirements into scalable data models and pipelines.</li>
         </ul>
       </details>
 
-      <!-- ASRI details -->
       <details>
-        <summary>Arkansas Summer Research Institute — Data Engineer Intern (May 2024 – Nov 2024)</summary>
+        <summary>
+          Arkansas Summer Research Institute — Data Engineer Intern <span class="summary-meta">May 2024 - Nov 2024</span>
+        </summary>
         <ul>
-          <li>Developed Azure ETL/ELT pipelines using ADF, Databricks, and PySpark to process multi-format research datasets.</li>
-          <li>Built Lakehouse (ADLS + Delta) with bronze/silver/gold layers and medallion patterns for ML and analytics teams.</li>
-          <li>Created Synapse analytical layers (star schema, incremental loads) and Power BI / Tableau dashboards for research insights.</li>
-          <li>Automated ingestion from APIs, Blob Storage, and SQL sources with monitoring and alerting.</li>
+          <li>Developed Azure-based ETL/ELT pipelines using ADF, Databricks, and PySpark, processing multi-format datasets.</li>
+          <li>Implemented Lakehouse architecture leveraging ADLS, Delta Lake, and curated medallion layers to support ML and analytics teams.</li>
+          <li>Configured automated ADF ingestion pipelines integrating APIs, Blob Storage, and SQL sources with monitoring and alerting.</li>
+          <li>Modeled analytical layers in Synapse using star-schema and incremental design patterns for research-based insights.</li>
+          <li>Created interactive dashboards in Power BI and Tableau to help research teams analyze experimental and statistical results.</li>
         </ul>
       </details>
 
-      <!-- Wipro details -->
       <details>
-        <summary>Wipro — Data Engineer (Aug 2022 – Dec 2023)</summary>
+        <summary>
+          Wipro — Data Engineer <span class="summary-meta">Aug 2022 - Dec 2023</span>
+        </summary>
         <ul>
-          <li>Engineered ETL pipelines using PySpark, Databricks, and AWS Glue to ingest and transform multi-terabyte enterprise datasets.</li>
-          <li>Designed and tuned Snowflake/Redshift models (star/snowflake) and optimized SQL to improve query performance.</li>
-          <li>Orchestrated Airflow DAGs for cross-source ingestion (APIs, RDS, S3, streaming), reducing manual ops and improving reliability.</li>
-          <li>Improved PySpark performance with partitioning, broadcast joins, caching and compression; executed Spark jobs on EMR for heavy transformation tasks.</li>
-          <li>Integrated data quality checks (null profiling, anomaly detection, referential validation) into pipelines and collaborated with BI teams.</li>
+          <li>Engineered large-scale ETL pipelines using PySpark, Databricks, and AWS Glue to ingest, transform, and curate multi-terabyte enterprise datasets.</li>
+          <li>Designed and optimized Snowflake/Redshift dimensional models (star and snowflake schemas).</li>
+          <li>Developed scalable ingestion frameworks orchestrated through Apache Airflow, automating cross-source loads.</li>
+          <li>Improved PySpark pipeline performance with partitioning, broadcast joins, caching, and compression techniques.</li>
+          <li>Processed large-scale datasets using Hadoop, Hive, and HDFS and executed Spark-based batch workloads on AWS EMR.</li>
+          <li>Constructed and fine-tuned complex SQL transformations and stored procedures across PostgreSQL, Snowflake, and Redshift.</li>
+          <li>Integrated data quality checks including null profiling, anomaly detection, and referential integrity validation into Airflow-managed workflows.</li>
         </ul>
       </details>
 
-      <!-- Verizon details -->
       <details>
-        <summary>Verizon — Data Engineer (Nov 2021 – Aug 2022)</summary>
+        <summary>
+          Verizon — Data Engineer <span class="summary-meta">Nov 2021 - Aug 2022</span>
+        </summary>
         <ul>
-          <li>Built GCP-native ETL pipelines using BigQuery, Dataflow, and Cloud Storage to ingest and transform telecom datasets.</li>
-          <li>Implemented Pub/Sub streaming for near-real-time ingestion of event logs and network telemetry.</li>
-          <li>Optimized BigQuery using partitioning, clustering, materialized views and window functions; created reusable Dataflow templates.</li>
-          <li>Automated quality checks (schema validation, NULL profiling, anomaly detection) and supported on-prem → GCP migrations.</li>
+          <li>Developed GCP-native ETL pipelines using BigQuery, Dataflow, and Cloud Storage to ingest, transform, and curate large-scale telecom datasets.</li>
+          <li>Implemented Pub/Sub–based streaming ingestion for near-real-time processing of event logs and network activity.</li>
+          <li>Optimized BigQuery SQL transformations using partitioning, clustering, materialized views, and window functions.</li>
+          <li>Built reusable Dataflow templates for batch and streaming pipelines and automated data quality checks.</li>
+          <li>Supported on-premises to GCP cloud migration by redesigning ingestion routes and improving scalability.</li>
+          <li>Partnered with analytics and BI teams to deliver curated datasets powering Looker Studio dashboards.</li>
         </ul>
       </details>
-
     </section>
 
-    <!-- Projects -->
-    <section id="projects">
-      <h2>PROJECTS</h2>
+    <!-- Projects (details drop-downs) -->
+    <section class="block" id="projects" aria-labelledby="projects-heading">
+      <h2 class="section-title" id="projects-heading">PROJECTS</h2>
 
-      <div class="project">
-        <strong>Azure Lakehouse — End-to-End Analytics Platform</strong> <div style="color:#cfeff0">• Feb 2024</div>
-        <details>
-          <summary>Details</summary>
-          <ul>
-            <li>Built ADF-driven ingestion into ADLS Gen2 and Delta bronze/silver/gold layers in Databricks and Synapse.</li>
-            <li>Implemented incremental loads, schema evolution, orchestration, monitoring, and automated alerts to support ML and BI workflows.</li>
-          </ul>
-        </details>
+      <div class="projects-grid">
+        <!-- Card 1 -->
+        <div>
+          <strong>Azure Lakehouse End-to-End Analytics (Azure)</strong>
+          <div style="color:#cfeff0; font-weight:600; margin-top:6px;">Feb 2024</div>
+          <details>
+            <summary>Details</summary>
+            <ul>
+              <li>Built a Lakehouse using ADF, ADLS, Databricks, and Delta Lake to support scalable ingestion, schema evolution, and PySpark transformations for multi-format datasets.</li>
+              <li>Modeled analytical views in Synapse with star schema and incremental loads, enabling fast Tableau reporting for research and analytics teams.</li>
+            </ul>
+          </details>
+        </div>
+
+        <!-- Card 2 -->
+        <div>
+          <strong>Real-Time Streaming Pipeline (GCP: Pub/Sub → Dataflow → BigQuery)</strong>
+          <div style="color:#cfeff0; font-weight:600; margin-top:6px;">May 2024</div>
+          <details>
+            <summary>Details</summary>
+            <ul>
+              <li>Created a real-time Pub/Sub → Dataflow → BigQuery pipeline with windowing and partitioning for analytics-ready storage.</li>
+              <li>Added schema validation, dead-letter handling, and Cloud Functions monitoring to ensure reliable streaming ingestion.</li>
+            </ul>
+          </details>
+        </div>
+
+        <!-- Card 3 -->
+        <div>
+          <strong>Modern ELT Platform using Airflow, Snowflake and dbt</strong>
+          <div style="color:#cfeff0; font-weight:600; margin-top:6px;">Sep 2023</div>
+          <details>
+            <summary>Details</summary>
+            <ul>
+              <li>Built an Airflow-driven ELT system using Snowflake and dbt to automate ingestion, staging, and transformation workflows.</li>
+              <li>Implemented Snowpipe ingestion and dbt models for staging and dimensional layers, supporting consistent and high-quality BI datasets.</li>
+            </ul>
+          </details>
+        </div>
+
+        <!-- Card 4 -->
+        <div>
+          <strong>Real-Time Healthcare Events Pipeline (Kafka → Spark → Snowflake)</strong>
+          <div style="color:#cfeff0; font-weight:600; margin-top:6px;">Dec 2024</div>
+          <details>
+            <summary>Details</summary>
+            <ul>
+              <li>Built a real-time healthcare pipeline using Kafka for claims and clinical events and processed streams with Spark Structured Streaming.</li>
+              <li>Implemented Snowpipe ingestion with schema checks, PHI/PII protections, and HIPAA-aligned access controls.</li>
+            </ul>
+          </details>
+        </div>
+
+        <!-- Additional 6 projects (kept compact) -->
+        <div>
+          <strong>Serverless YouTube Analytics Pipeline (AWS)</strong>
+          <div style="color:#cfeff0; font-weight:600; margin-top:6px;">Oct 2021</div>
+          <details>
+            <summary>Details</summary>
+            <ul><li>Serverless ingestion using API pulls, Lambda transforms, S3 staging and Athena/Redshift for analytics.</li></ul>
+          </details>
+        </div>
+
+        <div>
+          <strong>IoT Sensor Analytics (Azure Event Hubs → Databricks)</strong>
+          <div style="color:#cfeff0; font-weight:600; margin-top:6px;">Nov 2022</div>
+          <details>
+            <summary>Details</summary>
+            <ul><li>Ingested telemetry into Delta Lake; streaming transforms and time-window aggregates for monitoring.</li></ul>
+          </details>
+        </div>
+
+        <div>
+          <strong>End-to-End Lakehouse (dbt + Snowflake + S3)</strong>
+          <div style="color:#cfeff0; font-weight:600; margin-top:6px;">Feb 2023</div>
+          <details>
+            <summary>Details</summary>
+            <ul><li>S3 landing, Snowflake ingestion, dbt transformations and materialized marts for analytics teams.</li></ul>
+          </details>
+        </div>
+
+        <div>
+          <strong>Predictive Sales Forecasting (BigQuery ML)</strong>
+          <div style="color:#cfeff0; font-weight:600; margin-top:6px;">Jun 2023</div>
+          <details>
+            <summary>Details</summary>
+            <ul><li>Feature-engineered BigQuery datasets and scheduled forecasting models in BigQuery ML.</li></ul>
+          </details>
+        </div>
+
+        <div>
+          <strong>Real-time Log Analytics (Kafka → Elastic → Kibana)</strong>
+          <div style="color:#cfeff0; font-weight:600; margin-top:6px;">Feb 2022</div>
+          <details>
+            <summary>Details</summary>
+            <ul><li>Streamed logs via Kafka into Elastic and built Kibana dashboards with alerting and retention policies.</li></ul>
+          </details>
+        </div>
+
+        <div>
+          <strong>Finance Data Warehouse (Azure Synapse)</strong>
+          <div style="color:#cfeff0; font-weight:600; margin-top:6px;">Jul 2022</div>
+          <details>
+            <summary>Details</summary>
+            <ul><li>Designed Synapse models and ETL pipelines with partitioning, incremental loads and role-based access.</li></ul>
+          </details>
+        </div>
       </div>
-
-      <div class="project">
-        <strong>Real-time Streaming Pipeline (GCP: Pub/Sub → Dataflow → BigQuery)</strong> <div style="color:#cfeff0">• May 2024</div>
-        <details>
-          <summary>Details</summary>
-          <ul>
-            <li>Implemented Pub/Sub ingestion and Dataflow/Apache Beam processing with windowing and writes into partitioned BigQuery tables.</li>
-            <li>Added schema validation, dead-letter handling, observability, and cost-optimized partitioning for stable streaming ingestion.</li>
-          </ul>
-        </details>
-      </div>
-
-      <div class="project">
-        <strong>Modern ELT Platform (Airflow + Snowflake + dbt)</strong> <div style="color:#cfeff0">• Sep 2023</div>
-        <details>
-          <summary>Details</summary>
-          <ul>
-            <li>Created Airflow DAGs, Snowpipe streaming loads, and dbt models with tests and CI to standardize transformations.</li>
-            <li>Built modular dbt staging → marts and environment-aware deploys to support reliable BI pipelines.</li>
-          </ul>
-        </details>
-      </div>
-
-      <div class="project">
-        <strong>Real-time Healthcare Events Pipeline (Kafka → Spark Streaming → Snowflake)</strong> <div style="color:#cfeff0">• Dec 2024</div>
-        <details>
-          <summary>Details</summary>
-          <ul>
-            <li>Streamed clinical and claims events via Kafka, processed with Spark Structured Streaming, and ingested into Snowflake via Snowpipe.</li>
-            <li>Implemented PHI/PII protections, encryption, masking, RBAC, and lineage to meet HIPAA-aligned controls for analytics-ready tables.</li>
-          </ul>
-        </details>
-      </div>
-
-      <div class="project">
-        <strong>Serverless YouTube Analytics Pipeline (AWS)</strong> <div style="color:#cfeff0">• Oct 2021</div>
-        <details>
-          <summary>Details</summary>
-          <ul>
-            <li>Lambda-driven ingestion into S3, Athena/Redshift for analytics; automated partitioning, lifecycle, and dashboards for channel KPI analysis.</li>
-          </ul>
-        </details>
-      </div>
-
-      <div class="project">
-        <strong>IoT Sensor Analytics (Azure Event Hubs → Databricks)</strong> <div style="color:#cfeff0">• Nov 2022</div>
-        <details>
-          <summary>Details</summary>
-          <ul>
-            <li>Ingested telemetry into Delta Lake and ran streaming aggregates in Databricks for near-real-time monitoring and anomaly detection.</li>
-          </ul>
-        </details>
-      </div>
-
-      <div class="project">
-        <strong>End-to-End Lakehouse (dbt + Snowflake + S3)</strong> <div style="color:#cfeff0">• Feb 2023</div>
-        <details>
-          <summary>Details</summary>
-          <ul>
-            <li>S3 landing + Snowflake ingestion, dbt transformations and materialized marts with tests and governance for consistent BI datasets.</li>
-          </ul>
-        </details>
-      </div>
-
-      <div class="project">
-        <strong>Predictive Sales Forecasting (BigQuery ML)</strong> <div style="color:#cfeff0">• Jun 2023</div>
-        <details>
-          <summary>Details</summary>
-          <ul>
-            <li>Built feature-engineered datasets in BigQuery and trained scheduled forecasting models using BigQuery ML for SKU-level demand forecasts.</li>
-          </ul>
-        </details>
-      </div>
-
-      <div class="project">
-        <strong>Real-time Log Analytics (Kafka → Elastic → Kibana)</strong> <div style="color:#cfeff0">• Feb 2022</div>
-        <details>
-          <summary>Details</summary>
-          <ul>
-            <li>Streamed logs into Elastic via Kafka and built Kibana dashboards with alerting and retention policies for SRE workflows.</li>
-          </ul>
-        </details>
-      </div>
-
-      <div class="project">
-        <strong>Finance Data Warehouse (Azure Synapse)</strong> <div style="color:#cfeff0">• Jul 2022</div>
-        <details>
-          <summary>Details</summary>
-          <ul>
-            <li>Designed Synapse models and ETL pipelines with partitioning, incremental loads, and role-based access for executive reporting.</li>
-          </ul>
-        </details>
-      </div>
-
     </section>
 
     <!-- Developments -->
-    <section id="developments">
-      <h3>Developments</h3>
-      <ul class="dev-list">
-        <li>Started working as a Data Engineer at <a href="https://www.unitedhealthgroup.com" target="_blank" style="color:#12b7a8">UnitedHealth Group</a></li>
-        <li>Data Engineer Intern at <a href="https://ualr.edu" target="_blank" style="color:#12b7a8">Arkansas Summer Research Institute</a></li>
-        <li>Worked as Data Engineer at <a href="https://www.wipro.com" target="_blank" style="color:#12b7a8">Wipro</a></li>
-        <li>Worked as Data Engineer at <a href="https://www.verizon.com" target="_blank" style="color:#12b7a8">Verizon</a></li>
+    <section class="block" id="developments" aria-labelledby="dev-heading">
+      <h2 class="section-title" id="dev-heading">Developments</h2>
+      <ul style="margin-left:18px">
+        <li>Started Working as a Data Engineering at <a href="https://www.unitedhealthgroup.com" target="_blank" rel="noopener">UnitedHealth Group</a></li>
+        <li>Worked as Data Engineer at <a href="https://www.arkansasedc.com/arkansas-nsf-epscor/division/data-analytics-that-are-robust-trusted-(dart)/arkansas-summer-research-institute" target="_blank" rel="noopener"> Arkansas Summer Research Institute</a></li>
+        <li>Worked as Data Engineer at <a href="https://www.wipro.com/" target="_blank" rel="noopener">Wipro</a></li>
+        <li>Worked as Data Engineer at <a href="https://www.verizon.com/business/solutions/it-infrastructure/" target="_blank" rel="noopener">Verizon</a></li>
       </ul>
     </section>
 
-    <!-- Skills -->
-    <section id="skills">
-      <h3>Skills & Certifications</h3>
-      <div class="skills-grid" style="margin-top:10px">
-        <div class="skill-col">
-          <strong>Programming & Scripting:</strong><br>Python, Scala, SQL, C, C++, Java, PySpark, Bash
-          <br><br>
-          <strong>AWS:</strong><br>S3, Glue, Glue Crawler, Lambda, Step Functions, CloudWatch, SQS, SNS, IAM, EMR, Athena, EventBridge, RDS
-          <br><br>
-          <strong>Azure:</strong><br>ADF, ADLS Gen2, Synapse Analytics, Blob Storage, Databricks
-          <br><br>
-          <strong>Security & Governance:</strong><br>IAM, Data Masking, Encryption, Schema Evolution, Data Quality Validation, HIPAA-compliant handling of PHI/PII
+    <!-- Skills & Certifications -->
+    <section class="block" id="skills" aria-labelledby="skills-heading">
+      <h2 class="section-title" id="skills-heading">Skills & Certifications</h2>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:10px">
+        <div style="min-width:260px;flex:1">
+          <strong>Programming & Scripting:</strong><br>Python, Scala, SQL, C, C++, Java, PySpark, Bash, Shell Scripting<br><br>
+          <strong>AWS:</strong><br>S3, Glue, Glue Crawler, Lambda, Step Functions, CloudWatch, SQS, SNS, IAM, EMR, Athena, Event Bridge, RDS<br><br>
+          <strong>Azure:</strong><br>ADF, ADLS Gen2, Synapse Analytics, Blob storage
         </div>
-        <div class="skill-col">
-          <strong>GCP:</strong><br>BigQuery, Dataflow, Pub/Sub, Dataproc, Cloud Storage, Looker Studio
-          <br><br>
-          <strong>Data Engineering:</strong><br>Spark, Kafka, Airflow, Delta Lake, Lakehouse, Hadoop, Hive
-          <br><br>
-          <strong>Visualization & Governance:</strong><br>Power BI, Tableau, Looker Studio, Superset
-          <br><br>
-          <strong>Certifications:</strong><br>AWS Solutions Architect – Associate<br>Azure AI Fundamentals
+        <div style="min-width:260px;flex:1">
+          <strong>GCP:</strong><br>BigQuery, Dataflow, Pub/Sub, Dataproc, Cloud Storage, Looker Studio<br><br>
+          <strong>Data Engineering & Big Data:</strong><br>Spark, Kafka, Airflow, Delta Lake, Lakehouse, Hadoop, Hive, HDFS, dbt<br><br>
+          <strong>Certifications:</strong><br>AWS Certified Solutions Architect – Associate<br>Microsoft Certified: Azure AI Fundamentals
         </div>
       </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact">
-      <h3>Contact</h3>
-      <p>Phone: <a href="tel:+15019442776" style="color:#cfeff0">+1 501-944-2776</a><br>
-      Email: <a href="mailto:vedasri996@gmail.com" style="color:#cfeff0">vedasri996@gmail.com</a><br>
-      LinkedIn: <a href="https://www.linkedin.com/in/vedhasreeb" target="_blank" style="color:#cfeff0">linkedin.com/in/vedhasreeb</a><br>
-      GitHub: <a href="https://github.com/vedhabonala" target="_blank" style="color:#cfeff0">github.com/vedhabonala</a></p>
+    <section class="block" id="contact" aria-labelledby="contact-heading">
+      <h2 class="section-title" id="contact-heading">Contact</h2>
+      <p style="margin-top:8px">
+        <strong>Phone:</strong> <a href="tel:+15019442776">+1 501-944-2776</a><br>
+        <strong>Email:</strong> <a href="mailto:vedasri996@gmail.com">vedasri996@gmail.com</a><br>
+        <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/vedhasreeb" target="_blank" rel="noopener">linkedin.com/in/vedhasreeb</a><br>
+        <strong>GitHub:</strong> <a href="https://github.com/vedhabonala" target="_blank" rel="noopener">github.com/vedhabonala</a>
+      </p>
     </section>
 
-    <footer>
-      © <span id="yr">2025</span> Vedhasree Bonala — Data Engineering — Little Rock, AR
-    </footer>
   </div>
 
   <script>
-    // set footer year dynamically
-    var yr = document.getElementById('yr');
-    if (yr) yr.textContent = new Date().getFullYear();
+    // dynamic year
+    document.getElementById('yr').textContent = new Date().getFullYear();
 
-    // Accessibility: toggle summary "aria-expanded" attribute for screen readers
+    // accessible details toggles (aria-expanded reflects open state)
     document.querySelectorAll('details').forEach(function(d){
       var s = d.querySelector('summary');
-      if(s){
-        s.setAttribute('role','button');
-        s.setAttribute('aria-expanded', d.hasAttribute('open') ? 'true' : 'false');
-        s.addEventListener('click', function(){
-          // set aria-expanded after a tiny timeout to reflect new state
-          setTimeout(function(){
-            s.setAttribute('aria-expanded', d.hasAttribute('open') ? 'true' : 'false');
-          }, 10);
-        });
-      }
+      if(!s) return;
+      s.setAttribute('role','button');
+      s.setAttribute('aria-expanded', d.hasAttribute('open') ? 'true' : 'false');
+      s.addEventListener('click', function(){
+        setTimeout(function(){ s.setAttribute('aria-expanded', d.hasAttribute('open') ? 'true' : 'false'); }, 10);
+      });
     });
   </script>
 </body>
